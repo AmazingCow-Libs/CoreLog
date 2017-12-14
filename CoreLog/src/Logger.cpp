@@ -1,5 +1,5 @@
 // Header
-#include "lib/CoreLog/include/Logger.h"
+#include "../include/Logger.h"
 // std
 #include <cstring>
 // termcolor

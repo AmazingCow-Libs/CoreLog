@@ -84,8 +84,9 @@ public:
     //------------------------------------------------------------------------//
 public:
     void SetType(
-        Level level,
+        Type type,
         const std::string &filename = PseudoFilename::Default) noexcept;
+
     Type GetType();
 
     const std::string& Filename() const noexcept;

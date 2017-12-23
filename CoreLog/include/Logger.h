@@ -88,7 +88,7 @@ public:
         const std::string &filename = PseudoFilename::Default) noexcept;
     Type GetType();
 
-    const std::string& Filename() const noexcept ;
+    const std::string& Filename() const noexcept;
 
 
     //------------------------------------------------------------------------//
@@ -144,7 +144,7 @@ public:
 
 
     //------------------------------------------------------------------------//
-    // Private Methos                                                         //
+    // Private Methods                                                        //
     //------------------------------------------------------------------------//
 private:
     void _Log (Level level, const std::string &type, const std::string &message);

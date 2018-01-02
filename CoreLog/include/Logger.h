@@ -2,6 +2,7 @@
 
 // std
 #include <string>
+#include <limits>
 // CoreLog
 #include "CoreLog_Utils.h"
 // CoreString
@@ -101,8 +102,9 @@ public:
 
 
     //------------------------------------------------------------------------//
-    // Log Functions                                                          //
+    // Debug                                                                  //
     //------------------------------------------------------------------------//
+public:
     template <typename ...Value>
     void D(const std::string &fmt, Value && ...args)
     {
@@ -114,6 +116,16 @@ public:
     }
 
     template <typename ...Value>
+    void Debug(const std::string &fmt, Value && ...args)
+    {
+        D(fmt, std::forward<Value>(args)...);
+    }
+
+    //------------------------------------------------------------------------//
+    // Info                                                                   //
+    //------------------------------------------------------------------------//
+public:
+    template <typename ...Value>
     void I(const std::string &fmt, Value && ...args)
     {
         _Log(
@@ -123,6 +135,16 @@ public:
         );
     }
 
+    template <typename ...Value>
+    void Info(const std::string &fmt, Value && ...args)
+    {
+        I(fmt, std::forward<Value>(args)...);
+    }
+
+    //------------------------------------------------------------------------//
+    // Warning                                                                //
+    //------------------------------------------------------------------------//
+public:
     template <typename ...Value>
     void W(const std::string &fmt, Value && ...args)
     {
@@ -134,6 +156,17 @@ public:
     }
 
     template <typename ...Value>
+    void Warn(const std::string &fmt, Value && ...args)
+    {
+        W(fmt, std::forward<Value>(args)...);
+    }
+
+
+    //------------------------------------------------------------------------//
+    // Error                                                                  //
+    //------------------------------------------------------------------------//
+public:
+    template <typename ...Value>
     void E(const std::string &fmt, Value && ...args)
     {
         _Log(
@@ -142,6 +175,35 @@ public:
             CoreString::Format(fmt, std::forward<Value>(args)...)
         );
     }
+
+    template <typename ...Value>
+    void Error(const std::string &fmt, Value && ...args)
+    {
+        E(fmt, std::forward<Value>(args)...);
+    }
+
+    //------------------------------------------------------------------------//
+    // Fatal                                                                  //
+    //------------------------------------------------------------------------//
+public:
+    template <typename ...Value>
+    void F(const std::string &fmt, Value && ...args)
+    {
+        auto level = std::numeric_limits<unsigned int>::max();
+        _Log(
+            level,
+            "FATAL",
+            CoreString::Format(fmt, std::forward<Value>(args)...)
+        );
+        exit(1);
+    }
+
+    template <typename ...Value>
+    void Fatal(const std::string &fmt, Value && ...args)
+    {
+        F(fmt, std::forward<Value>(args)...);
+    }
+
 
 
     //------------------------------------------------------------------------//

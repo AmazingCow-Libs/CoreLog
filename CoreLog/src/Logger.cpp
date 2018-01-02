@@ -140,7 +140,8 @@ void Logger::_Log(
 {
     //--------------------------------------------------------------------------
     // This level isn't enabled.
-    if(!(HAS_(m_level, level)))
+    bool is_fatal_log = (level == std::numeric_limits<decltype(level)>::max());
+    if(!(HAS_(m_level, level)) && !is_fatal_log)
         return;
 
     //--------------------------------------------------------------------------
@@ -152,6 +153,8 @@ void Logger::_Log(
         case LOG_LEVEL_INFO  : out_color = termcolor::BLUE;   break;
         case LOG_LEVEL_WARN  : out_color = termcolor::YELLOW; break;
         case LOG_LEVEL_ERROR : out_color = termcolor::RED;    break;
+        default              : out_color = termcolor::RED;    break; // Fatal Log.
+
     }
 
     //--------------------------------------------------------------------------

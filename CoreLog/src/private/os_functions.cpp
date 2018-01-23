@@ -29,10 +29,18 @@ USING_NS_CORELOG;
 
     const std::string& Private::get_program_name()
     {
-		TCHAR exe_filename[MAX_PATH];
-		GetModuleFileName(nullptr, exe_filename, MAX_PATH);
+		static std::string s_program_name;
+		static bool initialized = false;
 		
-		return std::string(exe_filename);
+		if(!initialized)
+		{
+			TCHAR exe_filename[MAX_PATH];
+			GetModuleFileName(nullptr, exe_filename, MAX_PATH);
+			
+			s_program_name = std::string(exe_filename);
+		}
+
+		return s_program_name;
     }
 
 #endif // #if (ACOW_OS_IS_GNU_LINUX)

@@ -3,10 +3,11 @@
 // std
 #include <string>
 #include <limits>
+// AmazingCow Libs
+#include "acow/cpp_goodies.h"
+#include "CoreString/CoreString.h"
 // CoreLog
 #include "CoreLog_Utils.h"
-// CoreString
-#include "CoreString/CoreString.h"
 
 NS_CORELOG_BEGIN
 
@@ -195,6 +196,9 @@ public:
             "FATAL",
             CoreString::Format(fmt, std::forward<Value>(args)...)
         );
+
+        ACOW_DEBUGGER_BREAK();
+
         exit(1);
     }
 

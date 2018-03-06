@@ -154,7 +154,6 @@ void Logger::_Log(
         case LOG_LEVEL_WARN  : out_color = termcolor::YELLOW; break;
         case LOG_LEVEL_ERROR : out_color = termcolor::RED;    break;
         default              : out_color = termcolor::RED;    break; // Fatal Log.
-
     }
 
     //--------------------------------------------------------------------------

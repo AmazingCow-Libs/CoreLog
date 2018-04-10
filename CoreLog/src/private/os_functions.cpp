@@ -44,7 +44,7 @@ USING_NS_CORELOG;
     }
 
 #elif (ACOW_OS_IS_WINDOWS)
-    #define WINDOWS_LEAN_AND_MEAN   
+    #define WIN32_LEAN_AND_MEAN
     #define _WINSOCKAPI_
     #include <Windows.h>
 

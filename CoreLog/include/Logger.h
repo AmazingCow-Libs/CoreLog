@@ -29,6 +29,11 @@
 // CoreLog
 #include "CoreLog_Utils.h"
 
+#if (ACOW_OS_IS_WINDOWS) 
+    #undef max
+    #undef min
+#endif 
+
 NS_CORELOG_BEGIN
 
 class Logger

@@ -44,6 +44,8 @@ USING_NS_CORELOG;
     }
 
 #elif (ACOW_OS_IS_WINDOWS)
+    #define WINDOWS_LEAN_AND_MEAN   
+    #define _WINSOCKAPI_
     #include <Windows.h>
 
     const std::string& Private::get_program_name()
